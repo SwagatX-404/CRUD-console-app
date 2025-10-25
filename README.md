@@ -28,7 +28,7 @@ String username = "your_mysql_username";
 String password = "your_mysql_password";
 ```
 
-
+***Open Project PATH and then open cmd***
 **First Compile and then Run**
 
 ```bash
