@@ -55,21 +55,81 @@ public class CrudApp {
 
 // CREATE : Insert Data or add user
     public static void insertUser() {
+        try {
+            System.out.print("Enter name: ");
+            String name = sc.nextLine();
 
+            System.out.print("Enter email: ");
+            String email = sc.nextLine();
+
+            String q = "INSERT INTO users (name, email) VALUES (?, ?)";
+            PreparedStatement ps = con.prepareStatement(q);
+            ps.setString(1, name);
+            ps.setString(2, email);
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) 
+            System.out.println(" User added!");
+        } catch (SQLException e) {
+            System.out.println(" Insert failed: " + e.getMessage());
+        }
     }
 
 // READ : view user data only
     public static void viewUsers() {
+        try {
+            String q = "SELECT * FROM users";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(q);
 
+            System.out.println("\n--- USER LIST ---");
+            while (rs.next()) {
+                System.out.printf("%-5d %-20s %-30s%n",
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("email"));
+            }
+        } catch (SQLException e) {
+            System.out.println(" View failed: " + e.getMessage());
+        }
     }
 
 // UPDATE : update user data 
     public static void updateUser() {
+        try {
+            System.out.print("Enter User ID to update: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+            System.out.print("Enter new email: ");
+            String email = sc.nextLine();
 
+            String q = "UPDATE users SET email=? WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(q);
+            ps.setString(1, email);
+            ps.setInt(2, id);
+            int rows = ps.executeUpdate();
+            if (rows > 0) System.out.println(" User updated!");
+            else System.out.println(" No user found with ID " + id);
+        } catch (SQLException e) {
+            System.out.println(" Update failed: " + e.getMessage());
+        }
     }
 
 // DELETE : delete user from DB
     public static void deleteUser() {
+           try {
+            System.out.print("Enter User ID to delete: ");
+            int id = sc.nextInt();
+            sc.nextLine();
 
+            String q = "DELETE FROM users WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(q);
+            ps.setInt(1, id);
+            int rows = ps.executeUpdate();
+            if (rows > 0) System.out.println(" User deleted!");
+            else System.out.println(" No user found with ID " + id);
+        } catch (SQLException e) {
+            System.out.println(" Delete failed: " + e.getMessage());
+        }
     }
 }
