@@ -15,10 +15,37 @@ public class CrudApp {
             //Connection to DB MYSQL through JDBC DRIVER it a connection between JavaProgram and MySQLdb 
             Class.forName("com.mysql.cj.jdbc.Driver");  
             con = DriverManager.getConnection(URL, USER, PASS);
-
+            
             System.out.println("SuccessFully Connected to MySQL!.......");
 
-           
+            //Create Menu System
+            int choice; //V declare
+            do {
+                System.out.println("\n===== USER CRUD MENU =====");
+
+                System.out.println("1. Insert User");
+                System.out.println("2. View All Users");
+                System.out.println("3. Update User Email");
+                System.out.println("4. Delete User");
+                System.out.println("5. Exit");
+
+                System.out.print("Enter your choice: ");
+                 choice = sc.nextInt();  //Variable take int type (1,2,3,4,5)
+                sc.nextLine(); // consume newline
+
+                //Handle User Choice
+                switch (choice) {
+                    case 1 -> insertUser();
+                    case 2 -> viewUsers();
+                    case 3 -> updateUser();
+                    case 4 -> deleteUser();
+                    case 5 -> System.out.println(" Exiting...");
+                    default -> System.out.println(" Invalid choice!");
+                }
+            } while (choice != 5);
+
+            con.close();
+            
         } catch (Exception e) {
             System.out.println(" Error: " + e.getMessage());
         }
