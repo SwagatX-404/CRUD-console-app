@@ -1,4 +1,4 @@
-his program is meant to perform basic operations on a database, which are often called CRUD operations:
+## This program is meant to perform basic operations on a database, which are often called CRUD operations:
 
     Create (Add new data)
     Read (View data)
@@ -36,3 +36,8 @@ String password = "your_mysql_password";
 
     java -cp .;mysql-connector-j-9.5.0.jar CrudApp
 ```
+## Snapshots
+<img width="1264" height="851" alt="Screenshot 2025-10-25 223553" src="https://github.com/user-attachments/assets/4098b0e9-fcf8-49ba-9d58-11ee3de74669" />
+<img width="1283" height="974" alt="Screenshot 2025-10-25 223440" src="https://github.com/user-attachments/assets/07e25b7f-d1ce-433f-b1dd-271f9d3a1bad" />
+<img width="945" height="1017" alt="Screenshot 2025-10-23 231246" src="https://github.com/user-attachments/assets/aab9f672-6fd6-470f-8766-6dbadb554b3b" />
+
